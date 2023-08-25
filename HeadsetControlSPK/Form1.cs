@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
+using Microsoft.Win32;
 
 namespace HeadsetControlSPK
 {
@@ -85,6 +86,19 @@ namespace HeadsetControlSPK
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void autoStartToolStripMenuItem_CheckStateChanged(object sender, EventArgs e)
+        {
+            RegistryKey registryKey = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+            if (autoStartToolStripMenuItem.Checked)
+            {
+                registryKey.SetValue(PROGRAMname, Application.ExecutablePath);
+            }
+            else
+            {
+                registryKey.DeleteValue(PROGRAMname);
+            }
         }
     }
 }

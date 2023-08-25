@@ -35,6 +35,7 @@
             this.forceCheckToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reloadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.autoStartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -50,31 +51,42 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.forceCheckToolStripMenuItem,
             this.reloadToolStripMenuItem,
+            this.autoStartToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.contextMenuStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.ShowCheckMargin = true;
             this.contextMenuStrip1.ShowImageMargin = false;
-            this.contextMenuStrip1.Size = new System.Drawing.Size(128, 92);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 114);
             // 
             // forceCheckToolStripMenuItem
             // 
             this.forceCheckToolStripMenuItem.Name = "forceCheckToolStripMenuItem";
-            this.forceCheckToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.forceCheckToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.forceCheckToolStripMenuItem.Text = "Force Check %";
             this.forceCheckToolStripMenuItem.Click += new System.EventHandler(this.forceCheckToolStripMenuItem_Click);
             // 
             // reloadToolStripMenuItem
             // 
             this.reloadToolStripMenuItem.Name = "reloadToolStripMenuItem";
-            this.reloadToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.reloadToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.reloadToolStripMenuItem.Text = "Reload";
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
+            // autoStartToolStripMenuItem
+            // 
+            this.autoStartToolStripMenuItem.CheckOnClick = true;
+            this.autoStartToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.autoStartToolStripMenuItem.Name = "autoStartToolStripMenuItem";
+            this.autoStartToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.autoStartToolStripMenuItem.Text = "AutoStart";
+            this.autoStartToolStripMenuItem.CheckStateChanged += new System.EventHandler(this.autoStartToolStripMenuItem_CheckStateChanged);
             // 
             // Form1
             // 
@@ -98,6 +110,7 @@
         private System.Windows.Forms.ToolStripMenuItem forceCheckToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reloadToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem autoStartToolStripMenuItem;
     }
 }
 
