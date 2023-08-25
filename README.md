@@ -1,6 +1,7 @@
 # HeadsetControlSPK
 My version of HeadsetControl from Sapd
 
+Designed for steelseries headsets (icon changes color)
 
 Features:
 
