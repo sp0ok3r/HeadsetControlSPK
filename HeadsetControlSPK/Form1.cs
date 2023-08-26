@@ -34,26 +34,35 @@ namespace HeadsetControlSPK
             process.Start();
             string output = process.StandardOutput.ReadToEnd();
 
-
-            string result = output.Split('\n')[1];
-            string bat = Regex.Match(result, @"\d+").Value.ToString();
-
-            int a = int.Parse(bat);
-            if ((50 <= a && a <= 100))
+            if (output == null || output.Contains("Unavailable"))
             {
-                this.notifyIcon1.Icon = Properties.Resources.ssfull;
-            }
-            else if (20 <= a && a <= 49)
-            {
-                this.notifyIcon1.Icon = Properties.Resources.ssmid;
+                this.notifyIcon1.Icon = Properties.Resources.ssred;
+                this.notifyIcon1.Text = PROGRAMname + "\n" + "Disconnected/Unavailable";
+                process.WaitForExit();
+
             }
             else
             {
-                this.notifyIcon1.Icon = Properties.Resources.ssred;
-            }
-            this.notifyIcon1.Text = PROGRAMname + "\n" + bat + " %";
-            process.WaitForExit();
+                string result = output.Split('\n')[1];
+                string bat = Regex.Match(result, @"\d+").Value.ToString();
 
+                int a = int.Parse(bat);
+                if ((50 <= a && a <= 100))
+                {
+                    this.notifyIcon1.Icon = Properties.Resources.ssfull;
+                }
+                else if (20 <= a && a <= 49)
+                {
+                    this.notifyIcon1.Icon = Properties.Resources.ssmid;
+                }
+                else
+                {
+                    this.notifyIcon1.Icon = Properties.Resources.ssred;
+                }
+                this.notifyIcon1.Text = PROGRAMname + "\n" + bat + " %";
+                process.WaitForExit();
+
+            }
         }
         private void Form1_Shown(object sender, EventArgs e)
         {
@@ -65,13 +74,14 @@ namespace HeadsetControlSPK
             checkAutoStart(PROGRAMname, Application.ExecutablePath);
 
             HeadsetStatus();
-            t.Interval = 3600000;
+            t.Interval = 3600000;//3600000
             t.Tick += new EventHandler(timer_Tick);
             t.Start();
         }
 
         private void timer_Tick(object sender, EventArgs e)
         {
+            //this.notifyIcon1.Text = PROGRAMname + "\n" + "Checking Battery...";
             HeadsetStatus();
         }
 
