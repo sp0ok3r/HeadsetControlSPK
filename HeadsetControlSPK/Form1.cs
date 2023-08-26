@@ -138,5 +138,10 @@ namespace HeadsetControlSPK
                 registryKey.DeleteValue(PROGRAMname);
             }
         }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://github.com/sp0ok3r/HeadsetControlSPK");
+        }
     }
 }
