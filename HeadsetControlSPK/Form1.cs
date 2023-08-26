@@ -61,8 +61,10 @@ namespace HeadsetControlSPK
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            HeadsetStatus();
             Hide();
+            checkAutoStart(PROGRAMname, Application.ExecutablePath);
+
+            HeadsetStatus();
             t.Interval = 3600000;
             t.Tick += new EventHandler(timer_Tick);
             t.Start();
@@ -88,6 +90,32 @@ namespace HeadsetControlSPK
             Application.Exit();
         }
 
+        public bool checkAutoStart(string appName, string appPath)
+        {
+            try
+            {
+                string value;
+                RegistryKey winLogonKey = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+                value = winLogonKey.GetValue(appName).ToString();
+                if (value == null)
+                {
+                    return false;
+                }
+                else if (!value.ToLower().Equals(appPath.ToLower()))
+                {
+                    return false;
+                }
+                else
+                {
+                    autoStartToolStripMenuItem.Checked = true;
+                    return true;
+                }
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
         private void autoStartToolStripMenuItem_CheckStateChanged(object sender, EventArgs e)
         {
             RegistryKey registryKey = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
