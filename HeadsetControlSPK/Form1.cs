@@ -10,6 +10,7 @@ namespace HeadsetControlSPK
     {
         public Form1()
         {
+            Hide();
             InitializeComponent();
         }
 
@@ -74,7 +75,7 @@ namespace HeadsetControlSPK
             checkAutoStart(PROGRAMname, Application.ExecutablePath);
 
             HeadsetStatus();
-            t.Interval = 3600000;//3600000
+            t.Interval = 60 * 60 * 1000;//3600000
             t.Tick += new EventHandler(timer_Tick);
             t.Start();
         }
