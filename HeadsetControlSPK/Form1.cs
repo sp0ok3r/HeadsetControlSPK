@@ -35,7 +35,7 @@ namespace HeadsetControlSPK
             process.Start();
             string output = process.StandardOutput.ReadToEnd();
 
-            if (output == null || output.Contains("Unavailable"))
+            if (output == null || output.Contains("Unavailable") || output.Contains("Charging"))
             {
                 this.notifyIcon1.Icon = Properties.Resources.ssred;
                 this.notifyIcon1.Text = PROGRAMname + "\n" + "Disconnected/Unavailable";
